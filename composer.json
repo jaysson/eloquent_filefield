@@ -1,0 +1,36 @@
+{
+  "name": ":vendor/:package_name",
+  "type": "library",
+  "description": ":package_description",
+  "keywords": [
+    "jaysson",
+    "eloquent_filefield",
+    "file",
+    "upload",
+    "laravel"
+  ],
+  "homepage": "https://github.com/jaysson/eloquent_filefield",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Prabhakar Bhat",
+      "email": "prabhakarbhat@live.com",
+      "homepage": "http://prabhakarbhat.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "laravel/framework": "^5.1",
+    "php": "~5.5|~7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jaysson\\EloquentFileField\\": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
