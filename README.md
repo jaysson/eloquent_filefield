@@ -8,21 +8,32 @@ It does not handle any image processing. Take a look at [Glide][http://glide.the
 
 Via Composer
 
-``` bash
-$ composer require jaysson/:eloquent_filefield
+```bash
+$ composer require jaysson/eloquent_filefield
 ```
 
 ## Usage
 
-``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+In your Eloquent model:
+
+```php
+use Jaysson\EloquentFileField\FileFieldTrait;
+
+public $fileFields = [
+  'image' => [],
+  'poster' => [
+  	'disk' => app('config')->get('filesystems.default'),
+    'path' => 'uploads/:class_slug/:attribute/:unique_id-:file_name',
+    'default_path' => 'uploads/default.png'
+  ]
+];
 ```
+Each field can have filesystem disk, path pattern and default path options. If you don't specify any of them, they will be loaded from default config.
 
-## Testing
+## Publish default config
 
-``` bash
-$ composer test
+```bash
+$ php artisan vendor:publish 
 ```
 
 ## Security
