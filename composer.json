@@ -1,7 +1,7 @@
 {
-  "name": ":vendor/:package_name",
+  "name": "jaysson/eloquent_filefield",
   "type": "library",
-  "description": ":package_description",
+  "description": "Automatically save files assigned to eloquent model attributes",
   "keywords": [
     "jaysson",
     "eloquent_filefield",
