@@ -71,20 +71,20 @@ trait FileFieldTrait
             // If valid URL and file exists, download it
             if (filter_var($value, FILTER_VALIDATE_URL)) {
                 $headers = @get_headers($value);
-                if(strpos($headers[0],'200')){
+                if (strpos($headers[0], '200') || strpos($headers[0], '301') || strpos($headers[0], '302')) {
                     $fileName = pathinfo($value, PATHINFO_FILENAME);
                     $extension = pathinfo($value, PATHINFO_EXTENSION);
                     $fullFileName = join('.', [$fileName, $extension]);
                     $fileField = new FileField($this, $key, $fullFileName);
                     $this->attributes[$key] = $fileField->uploadRemoteFile($value);
                 }
-            } elseif($value instanceof UploadedFile) {
+            } elseif ($value instanceof UploadedFile) {
                 $fileName = str_slug(pathinfo($value->getClientOriginalName(), PATHINFO_FILENAME));
                 $extension = $value->getClientOriginalExtension();
                 $fullFileName = join('.', [$fileName, $extension]);
                 $fileField = new FileField($this, $key, $fullFileName);
                 $this->attributes[$key] = $fileField->uploadFile($value);
-            } elseif (is_string($value)){
+            } elseif (is_string($value)) {
                 $fileName = pathinfo($value, PATHINFO_FILENAME);
                 $extension = pathinfo($value, PATHINFO_EXTENSION);
                 $fullFileName = join('.', [$fileName, $extension]);
